@@ -1,0 +1,52 @@
+@page "/piechart"
+
+@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.ChartJS.PieChart
+
+<h1> Sample Pie Chart</h1>
+
+<ChartJsPieChart ref="pieChartJs" Config="@pieChartConfig" Width="600" Height="300" />
+
+@functions{
+    protected PieChartConfig pieChartConfig { get; set; }
+    ChartJsPieChart pieChartJs;
+
+    protected override void OnInit()
+    {
+        pieChartConfig = pieChartConfig ?? new PieChartConfig
+        {
+            CanvasId = "myFirstPieChart",
+            Options = new PieChartOptions
+            {
+                Text = "Sample chart from Blazor",
+                Display = true,
+                Responsive = true//,
+                                 ///                Animation = new PieChartAnimation { AnimateRotate = true, AnimateScale = true }
+            },
+            Data = new PieChartData
+            {
+                Labels = new List<string> { "A", "B", "C", "D" },
+                Datasets = new List<PieChartDataset>
+                {
+                    new PieChartDataset
+                    {
+                        BackgroundColor = new[] {"#ff6384", "#55ee84", "#4463ff", "#efefef"},
+                        Data = new List<int> {4, 5, 6, 7},
+                        Label = "Light Red",
+                        BorderWidth = 0,
+                        HoverBackgroundColor = new[] {"#f06384"},
+                        HoverBorderColor = new[] {"#f06384"},
+                        HoverBorderWidth = new[] {1}, BorderColor = "#ffffff",
+                    }
+                }
+            }
+        };
+    }
+
+    protected override void OnAfterRender()
+    {
+        pieChartJs.Update();
+
+        base.OnAfterRender();
+    }
+}
