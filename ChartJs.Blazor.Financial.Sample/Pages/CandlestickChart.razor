@@ -1,0 +1,81 @@
+@page "/candlestickchart"
+
+@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.Financial
+@using ChartJs.Blazor.Financial.CandlestickChart
+
+<h1> Sample Candlestick Chart</h1>
+
+<div style="width:1000px">
+			<canvas id="chart"></canvas>
+		</div>
+
+<ChartJsCandlestickChart ref="candlestickChartJs" Config="@candlestickChartConfig" Width="600" Height="300" />
+
+@functions{
+    protected CandlestickChartConfig candlestickChartConfig { get; set; }
+    ChartJsCandlestickChart candlestickChartJs;
+
+    protected override void OnInit()
+    {
+        candlestickChartConfig = candlestickChartConfig ?? new CandlestickChartConfig
+        {
+            CanvasId = "myFirstCandlestickhart",
+            Options = new CandlestickChartOptions(),
+            Data = new CandlestickChartData
+            {
+                Datasets = new List<CandlestickChartDataset>
+                {
+                    new CandlestickChartDataset
+                    {
+                        Label = "Sample Candlestick label",
+                        Data = new List<Candlestick> {
+                            new Candlestick {
+                                C = (decimal) 32.00,
+                                H = (decimal) 35.05,
+                                L = (decimal) 29.75,
+                                O = (decimal) 31.32,
+                                T = 1491004800000
+                            },
+                             new Candlestick {
+                                C = (decimal) 32.00,
+                                H = (decimal) 35.05,
+                                L = (decimal) 29.75,
+                                O = (decimal) 31.32,
+                                T = 1491181200000
+                            },
+                             new Candlestick {
+                                C = (decimal) 32.00,
+                                H = (decimal) 35.05,
+                                L = (decimal) 29.75,
+                                O = (decimal) 31.32,
+                                T = 1491267600000
+                            },
+                             new Candlestick {
+                                C =(decimal)  32.00,
+                                H = (decimal) 35.05,
+                                L = (decimal) 29.75,
+                                O = (decimal) 31.32,
+                                T = 1491354000000
+                            },
+                             new Candlestick {
+                                C =(decimal)  32.00,
+                                H = (decimal) 35.05,
+                                L = (decimal) 29.75,
+                                O = (decimal) 31.32,
+                                T = 1491440400000
+                            },
+                            },
+                    }
+                }
+            }
+        };
+    }
+
+    protected override void OnAfterRender()
+    {
+        candlestickChartJs.Update();
+
+        base.OnAfterRender();
+    }
+}

@@ -1,0 +1,9 @@
+﻿@using ChartJs.Blazor.ChartJS.LineChart
+@using ChartJs.Blazor.Financial.CandlestickChart
+@inherits ChartJs.Blazor.Charts.ChartBase<CandlestickChartConfig>
+
+<div class="row">
+    <div class="container">
+        <canvas id="@Config.CanvasId" width="@Width" height="@Height"></canvas>
+    </div>
+</div>
