@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="ChartJs.Blazor" Version="0.9.1-preview" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="3.0.0-preview5-19227-01" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>
